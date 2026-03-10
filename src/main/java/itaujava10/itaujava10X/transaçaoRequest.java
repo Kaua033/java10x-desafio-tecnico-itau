@@ -4,31 +4,27 @@ package itaujava10.itaujava10X;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Component
 public class transaçaoRequest {
 
     private BigDecimal valor;
     private OffsetDateTime dataHora;
 
-
-    public static BigDecimal getValor() {
+    public BigDecimal getValor() {
         return valor;
-    }
-
-    public void setValor(BigDecimal valor) {
-        this.valor = valor;
     }
 
     public OffsetDateTime getDataHora() {
         return dataHora;
     }
-
-    public void setDataHora(OffsetDateTime dataHora) {
-        this.dataHora = dataHora;
-    }
 }
+
+
+

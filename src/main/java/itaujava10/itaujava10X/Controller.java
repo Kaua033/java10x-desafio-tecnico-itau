@@ -9,12 +9,17 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class Controller {
    @Autowired
-    private service service;
+    private Transacaoservice transacaoservice;
 
 @PostMapping
-    public ResponseEntity<?> Adicionar(@RequestBody transaçaoRequest transaçaoRequestV{
-    service.validarTrsançao(transaçaoRequestV);
-    return ResponseEntity.status(HttpStatus.CREATED).build();
+    public ResponseEntity<?> Adicionar(@RequestBody transaçaoRequest transaçaoRequestV){
+    try{transacaoservice.validarTrsançao(transaçaoRequestV);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+
+    }catch (IllegalArgumentException exception){
+
+        return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY ).build();
+    }
 }
 
 
