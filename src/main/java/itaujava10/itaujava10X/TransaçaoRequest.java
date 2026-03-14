@@ -10,10 +10,12 @@ import java.time.OffsetDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class transaçaoRequest {
+public class TransaçaoRequest {
 
     private BigDecimal valor;
     private OffsetDateTime dataHora;
+
+
 }
 
 

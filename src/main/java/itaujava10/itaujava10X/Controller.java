@@ -10,17 +10,24 @@ import org.springframework.web.bind.annotation.*;
 public class Controller {
    @Autowired
     private Transacaoservice transacaoservice;
+   @Autowired
+   private transacaoRepository transacaoRepository;
 
-@PostMapping
-    public ResponseEntity<?> Adicionar(@RequestBody transaçaoRequest transaçaoRequestV){
+
+   @PostMapping
+    public ResponseEntity<?> Adicionar(@RequestBody TransaçaoRequest transaçaoRequestV){
+
     try{transacaoservice.validarTrsançao(transaçaoRequestV);
+     transacaoRepository.salvarDados(transaçaoRequestV);
         return ResponseEntity.status(HttpStatus.CREATED).build();
 
     }catch (IllegalArgumentException exception){
 
-        return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY ).build();
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 }
 
+@DeleteMapping("/deeletar")
+    public void AllDeletar(){}
 
 }
