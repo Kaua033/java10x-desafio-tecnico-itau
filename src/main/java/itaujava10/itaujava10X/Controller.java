@@ -27,7 +27,7 @@ public class Controller {
     }
 }
 
-@DeleteMapping("/deeletar")
+@DeleteMapping("/deletar")
     public void AllDeletar(){}
 
 }
