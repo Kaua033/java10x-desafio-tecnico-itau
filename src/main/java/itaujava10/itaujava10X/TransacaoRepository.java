@@ -1,9 +1,11 @@
 package itaujava10.itaujava10X;
 
+import org.springframework.stereotype.Repository;
+
 import java.util.ArrayList;
 import java.util.List;
-
-public class  transacaoRepository {
+@Repository
+public class TransacaoRepository {
 List<TransaçaoRequest> ListaDeTransaçao= new ArrayList<>();
     //Salvar dados em uma lista
     public void salvarDados(TransaçaoRequest transaçaoRequest){
@@ -16,7 +18,7 @@ List<TransaçaoRequest> ListaDeTransaçao= new ArrayList<>();
     }
 
     //Apagar todoas as transaçaoes
-    public void ApagarTodosDados(TransaçaoRequest transaçaoRequest) {
+    public void ApagarTodosDados() {
         ListaDeTransaçao.clear();
     }
 }

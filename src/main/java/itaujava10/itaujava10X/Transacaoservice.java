@@ -1,6 +1,5 @@
 package itaujava10.itaujava10X;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -10,6 +9,11 @@ public class Transacaoservice {
 
 
 
+private TransacaoRepository transacaoRepositoryV;
+
+    public Transacaoservice(TransacaoRepository transacaoRepositoryV) {
+        this.transacaoRepositoryV = transacaoRepositoryV;
+    }
 
     public void validarTrsançao(TransaçaoRequest transaçaoRequestV){
 if (transaçaoRequestV.getValor().compareTo(BigDecimal.ZERO) < 0 ) {
@@ -29,4 +33,8 @@ if (transaçaoRequestV.getDataHora().isBefore(OffsetDateTime.now())){
     }
 
     }
+
+public void teste(TransacaoRepository transacaoRepositoryV){
+        transacaoRepositoryV.ApagarTodosDados();
+}
 }

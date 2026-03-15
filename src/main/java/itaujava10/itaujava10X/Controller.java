@@ -11,23 +11,29 @@ public class Controller {
    @Autowired
     private Transacaoservice transacaoservice;
    @Autowired
-   private transacaoRepository transacaoRepository;
+   private TransacaoRepository transacaoRepositoryV;
 
 
-   @PostMapping
+   @PostMapping("/Add")
     public ResponseEntity<?> Adicionar(@RequestBody TransaçaoRequest transaçaoRequestV){
 
     try{transacaoservice.validarTrsançao(transaçaoRequestV);
-     transacaoRepository.salvarDados(transaçaoRequestV);
+     transacaoRepositoryV.salvarDados(transaçaoRequestV);
         return ResponseEntity.status(HttpStatus.CREATED).build();
 
-    }catch (IllegalArgumentException exception){
+    }catch (IllegalArgumentException exception) {
+
+        return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).build();
+    }catch (Exception e){
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 }
 
-@DeleteMapping("/deeletar")
-    public void AllDeletar(){}
+@DeleteMapping("/deletar")
+    public ResponseEntity AllDeletar(TransacaoRepository transacaoRepositoryV){
+       transacaoRepositoryV.ApagarTodosDados();
+return  ResponseEntity.status(HttpStatus.OK).build();
+   }
 
 }
