@@ -1,8 +1,6 @@
-package itaujava10.itaujava10X;
+package itaujava10.itaujava10X.ESTATISTICAS;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Getter
 public class estatisticaDTO {

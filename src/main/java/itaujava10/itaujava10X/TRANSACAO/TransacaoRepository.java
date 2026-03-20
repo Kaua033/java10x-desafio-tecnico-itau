@@ -1,4 +1,4 @@
-package itaujava10.itaujava10X;
+package itaujava10.itaujava10X.TRANSACAO;
 
 import org.springframework.stereotype.Repository;
 
@@ -20,5 +20,13 @@ List<TransaçaoRequest> ListaDeTransaçao= new ArrayList<>();
     //Apagar todoas as transaçaoes
     public void ApagarTodosDados() {
         ListaDeTransaçao.clear();
+    }
+
+    /**
+     * Retorna uma cópia da lista de transações.
+     * Usamos cópia para evitar que alguém modifique a lista interna.
+     */
+    public List<TransaçaoRequest> listarTodas() {
+        return new ArrayList<>(ListaDeTransaçao);
     }
 }

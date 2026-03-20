@@ -1,4 +1,4 @@
-package itaujava10.itaujava10X;
+package itaujava10.itaujava10X.TRANSACAO;
 
 
 import lombok.AllArgsConstructor;

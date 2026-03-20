@@ -1,4 +1,4 @@
-package itaujava10.itaujava10X;
+package itaujava10.itaujava10X.TRANSACAO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/transasao")
 @RestController
-public class Controller {
+public class TransacaoController {
    @Autowired
     private Transacaoservice transacaoservice;
    @Autowired
-   private transacaoRepository transacaoRepository;
+   private TransacaoRepository transacaoRepository;
 
 
    @PostMapping
@@ -28,6 +28,9 @@ public class Controller {
 }
 
 @DeleteMapping("/deeletar")
-    public void AllDeletar(){}
+    public ResponseEntity  AllDeletar(){
+       transacaoRepository.ApagarTodosDados();
+       return  ResponseEntity.status(HttpStatus.OK).build();
+}
 
 }

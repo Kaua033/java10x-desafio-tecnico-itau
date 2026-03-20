@@ -1,4 +1,4 @@
-package itaujava10.itaujava10X;
+package itaujava10.itaujava10X.TRANSACAO;
 
 import org.springframework.stereotype.Service;
 
@@ -11,8 +11,11 @@ public class Transacaoservice {
 
 private TransacaoRepository transacaoRepositoryV;
 
-    public Transacaoservice(TransacaoRepository transacaoRepositoryV) {
+    private TransaçaoRequest transaçaoRequestV;
+
+    public Transacaoservice(TransacaoRepository transacaoRepositoryV, TransaçaoRequest transaçaoRequestV) {
         this.transacaoRepositoryV = transacaoRepositoryV;
+        this.transaçaoRequestV = transaçaoRequestV;
     }
 
     public void validarTrsançao(TransaçaoRequest transaçaoRequestV){
@@ -34,7 +37,8 @@ if (transaçaoRequestV.getDataHora().isBefore(OffsetDateTime.now())){
 
     }
 
-public void teste(TransacaoRepository transacaoRepositoryV){
+public void DELECAO(TransacaoRepository transacaoRepositoryV){
         transacaoRepositoryV.ApagarTodosDados();
 }
+
 }
