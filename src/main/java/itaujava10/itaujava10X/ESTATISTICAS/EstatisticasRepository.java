@@ -5,21 +5,16 @@ import itaujava10.itaujava10X.TRANSACAO.TransaçaoRequest;
 import org.springframework.stereotype.Repository;
 
 import java.time.OffsetDateTime;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.stream.Collectors;
 
 @Repository
 public class EstatisticasRepository {
 
-private TransacaoRepository transacaoRepositoryV;
-private  TransaçaoRequest transaçaoRequestV;
+    private final TransacaoRepository transacaoRepositoryV;
 
-    public EstatisticasRepository(TransacaoRepository transacaoRepositoryV, TransaçaoRequest transaçaoRequestV) {
+    public EstatisticasRepository(TransacaoRepository transacaoRepositoryV) {
         this.transacaoRepositoryV = transacaoRepositoryV;
-        this.transaçaoRequestV = transaçaoRequestV;
     }
 
     // Metodo para filtrar
@@ -34,8 +29,5 @@ private  TransaçaoRequest transaçaoRequestV;
                 .collect(Collectors.toList());
 
     }
-
-
-    }
-
+}
 

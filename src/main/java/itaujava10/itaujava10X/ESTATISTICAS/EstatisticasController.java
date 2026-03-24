@@ -1,5 +1,6 @@
 package itaujava10.itaujava10X.ESTATISTICAS;
 
+import itaujava10.itaujava10X.TRANSACAO.TransaçaoRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,8 +28,8 @@ public class EstatisticasController {
      * Resposta: { count, sum, avg, min, max }
      */
     @GetMapping
-    public ResponseEntity<estatisticaDTO> getEstatisticas() {
-        estatisticaDTO estatisticas = estatisticasService.calcularEstatisticas();
+    public ResponseEntity<?> getEstatisticas() {
+        estatisticaDTO estatisticas = estatisticasService.GetEstatisticas();
         return ResponseEntity.ok(estatisticas);
     }
 }

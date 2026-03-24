@@ -9,32 +9,22 @@ public class Transacaoservice {
 
 
 
-private TransacaoRepository transacaoRepositoryV;
+    private final TransacaoRepository transacaoRepositoryV;
 
-    private TransaçaoRequest transaçaoRequestV;
-
-    public Transacaoservice(TransacaoRepository transacaoRepositoryV, TransaçaoRequest transaçaoRequestV) {
+    public Transacaoservice(TransacaoRepository transacaoRepositoryV) {
         this.transacaoRepositoryV = transacaoRepositoryV;
-        this.transaçaoRequestV = transaçaoRequestV;
     }
 
-    public void validarTrsançao(TransaçaoRequest transaçaoRequestV){
-if (transaçaoRequestV.getValor().compareTo(BigDecimal.ZERO) < 0 ) {
-    //trancisao nao e valida pq e menor ou igual a zero
-    throw  new IllegalArgumentException("Erro:Nao e valida,  pois e menor ou igual a zero");
-}
-if (transaçaoRequestV.getDataHora().isAfter(OffsetDateTime.now())){
-    throw new IllegalArgumentException("erro: na data");
-//validaçao da data e hora
-}
-if (transaçaoRequestV.getDataHora().isAfter(OffsetDateTime.now())) {
-        //validaçao da data presente
-        throw new  IllegalArgumentException("validaçao da data");
-    }
-if (transaçaoRequestV.getDataHora().isBefore(OffsetDateTime.now())){
-    throw new IllegalArgumentException("validaçao hora");
-    }
-
+    public void validarTrsançao(TransaçaoRequest transaçaoRequestV) {
+        if (transaçaoRequestV.getValor() == null || transaçaoRequestV.getValor().compareTo(BigDecimal.ZERO) <= 0) {
+            throw new IllegalArgumentException("Valor deve ser maior que zero");
+        }
+        if (transaçaoRequestV.getDataHora() == null) {
+            throw new IllegalArgumentException("Data e hora são obrigatórias");
+        }
+        if (transaçaoRequestV.getDataHora().isAfter(OffsetDateTime.now())) {
+            throw new IllegalArgumentException("Data não pode ser futura");
+        }
     }
 
 public void DELECAO(TransacaoRepository transacaoRepositoryV){
