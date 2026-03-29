@@ -4,13 +4,13 @@ import lombok.Getter;
 
 @Getter
 public class estatisticaDTO {
-  private final   Long count;
+  private final   int count;
     private final  Double sum;
     private final Double avg;
     private final    Double min;
     private final  Double max;
 
-    public estatisticaDTO(Long count, Double sum, Double avg, Double min, Double max) {
+    public estatisticaDTO(int count, Double sum, Double avg, Double min, Double max) {
         this.count = count;
         this.sum = sum;
         this.avg = avg;
