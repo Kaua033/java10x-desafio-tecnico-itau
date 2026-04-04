@@ -25,22 +25,23 @@ private final EstatisticaPropretis estatisticaPropretis;
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> Adicionar(@RequestBody TransaçaoRequest transaçaoRequestV){
+    public ResponseEntity<?> Adicionar(@RequestBody TransaçaoRequest transaçaoRequestV) {
 
-        try{
-            transacaoservice.validarTrsançao(transaçaoRequestV);
-            transacaoRepository.salvarDados(transaçaoRequestV);
-          log.info("Trnsação Criada com suscesso " + estatisticaPropretis.segundos());
-            return ResponseEntity.status(HttpStatus.CREATED).body(transaçaoRequestV);
+            try{
+                transacaoservice.validarTrsançao(transaçaoRequestV);
+                transacaoRepository.salvarDados(transaçaoRequestV);
+                log.info("Trnsação Criada com suscesso : {}", transaçaoRequestV.getValor(),transaçaoRequestV.getDataHora());
+                return ResponseEntity.status(HttpStatus.CREATED).body(transaçaoRequestV);
+            } catch (IllegalArgumentException exception) {
+                log.error("Erro de validação: {}", exception.getMessage());
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+            }
         }
-        catch (IllegalArgumentException exception){
-         log.error("Erro de validação");
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        }
-    }
+
 
     @DeleteMapping("/deeletar")
     public ResponseEntity<Void> allDeletar() {
+       log.info("Dados Apagados com suscesso: ");
         transacaoRepository.ApagarTodosDados();
         return ResponseEntity.status(HttpStatus.OK).build();
     }

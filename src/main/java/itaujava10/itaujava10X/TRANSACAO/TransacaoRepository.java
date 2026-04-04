@@ -46,6 +46,7 @@ List<TransaçaoRequest> ListaDeTransaçao= new ArrayList<>();
                //com o sumary e feito todos os calculos< maximo,minimo,suma etc..
                 .summaryStatistics();
         return new estatisticaDTO(
+
                 (int) sumary.getCount(),
                 sumary.getAverage(),
                 sumary.getMax(),

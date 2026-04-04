@@ -33,9 +33,19 @@ public class EstatisticasController {
     @GetMapping
     public ResponseEntity Estatistica(){
         final  var HoraInicial = OffsetDateTime.now()
-                .minusSeconds(60);
-      log.info("Transação validada");
-           return  ResponseEntity.ok(transacaoRepository.GetEstatisticas(HoraInicial));
+                .minusSeconds(estatisticaPropretis.segundos());
+
+        var resultado = transacaoRepository.GetEstatisticas(HoraInicial);
+
+        log.info("Estatísticas geradas - count: {}, sum: {}, avg: {}, min: {}, max: {}",
+                resultado.getCount(),
+                resultado.getSum(),
+                resultado.getAvg(),
+                resultado.getMin(),
+                resultado.getMax());
+
+        return ResponseEntity.ok(resultado);
+
        }
 
     }
